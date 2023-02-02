@@ -1,10 +1,12 @@
 html, body {
   height: 100%;
   width: 100%;
+  font-family: 'Lato', sans-serif;
 }
 
 h1 {
   text-align: center;
+  font-family: 'Lato', sans-serif;
 }
 
 .display {
@@ -19,7 +21,7 @@ h1 {
   display: flex;
   justify-content: space-around;
   border-top: 5px solid #7c5063;
-  background-color: rgba(76, 175, 80, 0.3)
+  background-color: rgba(168, 170, 159, 0.5)
 }
 
 @media screen and (max-width: 600px) {
@@ -46,6 +48,7 @@ h1 {
   font-size: 18px;
   height: 100px;
   font-weight: bold;
+  font-family: 'Lato', sans-serif;
 }
 
 
@@ -54,7 +57,7 @@ h1 {
   font-size: 18px;
   height: 100px;
   font-weight: bold;
-  
+  font-family: 'Lato', sans-serif;
 }
 
 .form {
@@ -67,12 +70,14 @@ input {
   padding: 5px 10px;
   font-size: 14px;
   color: black;
+  font-family: 'Lato', sans-serif;
 }
 
 button {
   font-size: 14px;
   padding: 5px 10px;
-  color: black;
+  color: #000000;
+  font-family: 'Lato', sans-serif;
 }
 
 body {

@@ -23,17 +23,20 @@ let displayLink = document.querySelector(".display-link");
 
 // task 7: create and populate an array to store your image urls. Create three more arrays. One to store your song names, one for the artists, and a last one for the song links.
 
-let images = ['https://i.scdn.co/image/ab67616d0000b2737e5947188bc00e547d85379d', 'https://i.scdn.co/image/ab67616d0000b273d2af333ea11148d368f12bb0', 'https://is3-ssl.mzstatic.com/image/thumb/Music116/v4/fb/67/41/fb6741e8-9af2-23a4-24a0-ca564fa183fb/888272096507_Cover.jpg/600x600bf-60.jpg'];
+let images = ['https://i.scdn.co/image/ab67616d0000b2737e5947188bc00e547d85379d', 'https://i.scdn.co/image/ab67616d0000b273d2af333ea11148d368f12bb0', 'https://is3-ssl.mzstatic.com/image/thumb/Music116/v4/fb/67/41/fb6741e8-9af2-23a4-24a0-ca564fa183fb/888272096507_Cover.jpg/600x600bf-60.jpg', 'https://m.media-amazon.com/images/I/419q9PPoFPL.jpg', 'https://upload.wikimedia.org/wikipedia/en/2/23/RM_Mono.png'];
 
-let songNames = ['Cereal', 'Your Dog Loves You', 'Tea Time' ];
+let songNames = ['Cereal', 'Your Dog Loves You', 'Tea Time', 'Palette', 'seoul'];
 
-let artists = ['Crush, ZICO', 'Colde', 'Meenoi, 10 cm'];
+let artists = ['Crush, ZICO', 'Colde, Crush', 'Meenoi, 10 cm', 'IU, G-Dragon', 'RM'];
 
-let songLinks = ['https://open.spotify.com/track/3AjWddhlSnA3PO8DQYXgSD?si=f9494b5e8be84ed3', 'https://open.spotify.com/track/2XdyebP7KxClMOse2C5iyA?si=4446ab7aca2845df', 'https://open.spotify.com/track/3JISGU3qHjPaBdWSh6ZJdq?si=e359e5a8c62f4461'];
+let songLinks = ['https://open.spotify.com/track/3AjWddhlSnA3PO8DQYXgSD?si=f9494b5e8be84ed3', 'https://open.spotify.com/track/2XdyebP7KxClMOse2C5iyA?si=4446ab7aca2845df', 'https://open.spotify.com/track/3JISGU3qHjPaBdWSh6ZJdq?si=e359e5a8c62f4461', 'https://open.spotify.com/track/3y7ByLZ05tluscOTRgEJ9Y?si=298b11a8eab44ab7', 'https://open.spotify.com/track/4VcKLbECzwOQTYe3Sut6xJ?si=27a6e8faca3a46a5'];
 
 //REFACTOR ARRAYS DAY 
 // task 11: comment out the arrays data.
+
 // task 12: create an object for each of your songs.
+let song1 = ['Cereal', 'Crush, ZICO', ]
+
 // task 13: inside each object, add key/value pairs to store the image url, song name, artist, and song link.
 // task 14: create an array that stores all of the objects.
 
@@ -49,16 +52,57 @@ let songLinks = ['https://open.spotify.com/track/3AjWddhlSnA3PO8DQYXgSD?si=f9494
 
 
 function addSongInfo() {
+  // task 9: declare a variable to save the user input of the image url. Declare three more variables that save user input: One for the song names, one for the artists, and a last one for the song links.
+  let userImg = image.value;
+  let userSong = songName.value;
+  let userArtist = artist.value;
+  let userLink = songLink.value;
 
-// task 9: declare a variable to save the user input of the image url. Declare three more variables that save user input: One for the song names, one for the artists, and a last one for the song links.
-
-
-// task 10: use `.push()` to add each input value to the correct array.
+  // task 10: use `.push()` to add each input value to the correct array.
+  images.push(userImg);
+  songNames.push(userSong);
+  artists.push(userArtist);
+  songLinks.push(userLink);
 
 }
 
+function displaySongInfo() {
+
+  // task 8: loop through your images array and display the images to your songs in the correct div. Create three more loops. One for the song names, one for the artists, and a last one for the song links.
+  for (let i = 0; i < songNames.length; i++) {
+    displaySong.insertAdjacentHTML("beforeend", `<p>${songNames[i]}</p>`)
+  }
+
+  for (let i = 0; i < artists.length; i++) {
+    displayArtist.insertAdjacentHTML("beforeend", `<p>${artists[i]}</p>`)
+  }
+
+  for (let i = 0; i < images.length; i++) {
+    displayImage.insertAdjacentHTML("beforeend", `<p><img src=${images[i]}></p>`)
+  }
+
+  for (let i = 0; i < songLinks.length; i++) {
+    displayLink.insertAdjacentHTML("beforeend", `<p><a href=${songLinks[i]}>Click here to listen</a></p>`)
+  }
 
 
+}
+// click event to add and display songs
+add.onclick = function() {
+  
+  addSongInfo();
+  emptyDisplay();
+  displaySongInfo();
+  image.value = "";
+  songName.value = "";
+  artist.value = "";
+  songLink.value = "";
+
+  
+};
+
+// function call to display stored songs
+displaySongInfo();
 
 /******** this function empties the display divs each time the button is clicked so that your playlist does not repeatedly add the data too many times. Where should this function be placed???********/
 function emptyDisplay() {
@@ -67,35 +111,3 @@ function emptyDisplay() {
   displayArtist.innerHTML = "";
   displayLink.innerHTML = "";
 }
-
-
-
-
-function displaySongInfo() {
-
-// task 8: loop through your images array and display the images to your songs in the correct div. Create three more loops. One for the song names, one for the artists, and a last one for the song links.
-for (let i = 0; i < songNames.length; i++)
-  {
-    displaySong.insertAdjacentHTML("beforeend", `<p>${songNames[i]}</p>`)
-  }
-
-  for (let i = 0; i < artists.length; i++)
-  {
-    displayArtist.insertAdjacentHTML("beforeend", `<p>${artists[i]}</p>`)
-  }
-  
-  for (let i = 0; i < images.length; i++)
-  {
-    displayImage.insertAdjacentHTML("beforeend", `<p><img src=${images[i]}></p>`)
-  }
-}
-// click event to add and display songs
-add.onclick = function() {
-  addSongInfo();
-  displaySongInfo();
-};
-
-// function call to display stored songs
-displaySongInfo();
-
-
