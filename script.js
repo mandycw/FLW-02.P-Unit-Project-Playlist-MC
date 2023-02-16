@@ -36,56 +36,49 @@ let displayLink = document.querySelector(".display-link");
 
 // task 12: create an object for each of your songs.
 let song1 = 
-{           images1:'https://i.scdn.co/image/ab67616d0000b2737e5947188bc00e547d85379d',
-songNames1: 'Cereal',
-artists1: 'Crush, ZICO',
-songLinks1: 'https://open.spotify.com/track/3AjWddhlSnA3PO8DQYXgSD?si=f9494b5e8be84ed3'}
+{           images:'https://i.scdn.co/image/ab67616d0000b2737e5947188bc00e547d85379d',
+songNames: 'Cereal',
+artists: 'Crush, ZICO',
+songLinks: 'https://open.spotify.com/track/3AjWddhlSnA3PO8DQYXgSD?si=f9494b5e8be84ed3'}
 
 let song2 = 
 {
-  images2: 'https://i.scdn.co/image/ab67616d0000b273d2af333ea11148d368f12bb0',
-  songNames2: 'Your Dog Loves You',
-  artists2: 'Colde, Crush',
-  songLinks2: 'https://open.spotify.com/track/2XdyebP7KxClMOse2C5iyA?si=4446ab7aca2845df' 
+  images: 'https://i.scdn.co/image/ab67616d0000b273d2af333ea11148d368f12bb0',
+  songNames: 'Your Dog Loves You',
+  artists: 'Colde, Crush',
+  songLinks: 'https://open.spotify.com/track/2XdyebP7KxClMOse2C5iyA?si=4446ab7aca2845df' 
 }
 
 let song3 = 
 {
-  images3: 'https://is3-ssl.mzstatic.com/image/thumb/Music116/v4/fb/67/41/fb6741e8-9af2-23a4-24a0-ca564fa183fb/888272096507_Cover.jpg/600x600bf-60.jpg',
-  songNames3: 'Tea Time',
-  artists3: 'Meenoi, 10 cm',
-  songLinks3: 'https://open.spotify.com/track/3JISGU3qHjPaBdWSh6ZJdq?si=e359e5a8c62f4461' 
+  images: 'https://is3-ssl.mzstatic.com/image/thumb/Music116/v4/fb/67/41/fb6741e8-9af2-23a4-24a0-ca564fa183fb/888272096507_Cover.jpg/600x600bf-60.jpg',
+  songNames: 'Tea Time',
+  artists: 'Meenoi, 10 cm',
+  songLinks: 'https://open.spotify.com/track/3JISGU3qHjPaBdWSh6ZJdq?si=e359e5a8c62f4461' 
 }
 
 let song4 = 
 {
-  images4: 'https://m.media-amazon.com/images/I/419q9PPoFPL.jpg',
-  songNames4: 'Palette',
-  artists4: 'IU, G-Dragon',
-  songLinks4: 'https://open.spotify.com/track/3y7ByLZ05tluscOTRgEJ9Y?si=298b11a8eab44ab7'
+  images: 'https://m.media-amazon.com/images/I/419q9PPoFPL.jpg',
+  songNames: 'Palette',
+  artists: 'IU, G-Dragon',
+  songLinks: 'https://open.spotify.com/track/3y7ByLZ05tluscOTRgEJ9Y?si=298b11a8eab44ab7'
 }
 
 let song5 = 
 {
-  images5:   'https://upload.wikimedia.org/wikipedia/en/2/23/RM_Mono.png',
-  songNames5: 'seoul',
-  artists5: 'RM',
-  songLinks5: 'https://open.spotify.com/track/4VcKLbECzwOQTYe3Sut6xJ?si=27a6e8faca3a46a5' 
+  images:   'https://upload.wikimedia.org/wikipedia/en/2/23/RM_Mono.png',
+  songNames: 'seoul',
+  artists: 'RM',
+  songLinks: 'https://open.spotify.com/track/4VcKLbECzwOQTYe3Sut6xJ?si=27a6e8faca3a46a5' 
 }
 
-let newSong = 
-{
-  newimage: image.value,
-  newSongName: songName.value,
-  newArtist: artist.value,
-  newLink: songLink.value
-  
-}
+
 
 
 // task 13: inside each object, add key/value pairs to store the image url, song name, artist, and song link.
 // task 14: create an array that stores all of the objects.
-let songs = [song1, song2, song3, song4, song5, newSong]
+let songs = [song1, song2, song3, song4, song5]
 
 
 //REFACTOR LOOPS DAY 
@@ -105,30 +98,39 @@ function addSongInfo() {
   let userLink = songLink.value;
 
   // task 10: use `.push()` to add each input value to the correct array.
-  images.push(userImg);
-  songNames.push(userSong);
-  artists.push(userArtist);
-  songLinks.push(userLink);
+
+  let newSong = 
+  {
+    images: userImg,
+    songNames: userSong,
+    artists: userArtist,
+    songLinks: userLink
+  };
+
+  songs.push(newSong);
+  console.log(songs);
+  
 
 }
 
 function displaySongInfo() {
 
   // task 8: loop through your images array and display the images to your songs in the correct div. Create three more loops. One for the song names, one for the artists, and a last one for the song links.
+
   for (let i = 0; i < songs.length; i++) {
-    displaySong.insertAdjacentHTML("beforeend", `<p>${songNames[i]}</p>`)
+    displayImage.insertAdjacentHTML("beforeend", `<p><img src=${songs[i].images}></p>`)
+  }
+  
+  for (let i = 0; i < songs.length; i++) {
+    displaySong.insertAdjacentHTML("beforeend", `<p>${songs[i].songNames}</p>`)
   }
 
   for (let i = 0; i < songs.length; i++) {
-    displayArtist.insertAdjacentHTML("beforeend", `<p>${artists[i]}</p>`)
+    displayArtist.insertAdjacentHTML("beforeend", `<p>${songs[i].artists}</p>`)
   }
 
   for (let i = 0; i < songs.length; i++) {
-    displayImage.insertAdjacentHTML("beforeend", `<p><img src=${images[i]}></p>`)
-  }
-
-  for (let i = 0; i < songs.length; i++) {
-    displayLink.insertAdjacentHTML("beforeend", `<p><a href=${songLinks[i]}>Click here to listen</a></p>`)
+    displayLink.insertAdjacentHTML("beforeend", `<p><a href=${songs[i].songLinks}>Click here to listen</a></p>`)
   }
 
 

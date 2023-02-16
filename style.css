@@ -88,3 +88,10 @@ color: #7c5063;
 h4{
   color: #ffffff;
 }
+
+img{
+
+width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
